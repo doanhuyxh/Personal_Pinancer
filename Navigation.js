@@ -1,10 +1,11 @@
 import "react-native-gesture-handler"
+
 import {NavigationContainer} from "@react-navigation/native"
 import {createDrawerNavigator, DrawerItemList} from "@react-navigation/drawer"
 import HomeScreen from "./screens/HomeScreen"
-import BankAccountScreen from "./screens/BankAccount/BankAccountScreen"
-import SubCategoryScreen from "./screens/SubCategoryScreen"
-import CategoryScreen from "./screens/CategoryScreen"
+import BankAccountScreen from "./screens/BankAccountScreen"
+import IncomeCategoryAndSubIncomeCategoryScreen from "./screens/IncomeCategoryAndSubIncomeCategoryScreen"
+import ExpenseCategoryAndSubExpenseCategoryScreen from "./screens/ExpenseCategoryAndSubExpenseCategoryScreen"
 import logo from "./assets/Images/Logo/logo.png";
 import {SafeAreaView, View, Image, Text} from "react-native";
 import React from "react";
@@ -14,13 +15,34 @@ import ExpenseScreen from "./screens/ExpenseScreen";
 import {COLORS, ICONS} from "./constants";
 import GoalScreen from "./screens/GoalScreen";
 import BudgetScreen from "./screens/BudgetScreen";
+import IncomeCategoryScreen from "./screens/IncomeCategoryScreen";
+import IncomeSubCategoryScreen from "./screens/IncomeSubCategoryScreen";
+import ExpenseCategoryScreen from "./screens/ExpenseCategoryScreen";
+import ExpenseSubCategoryScreen from "./screens/ExpenseSubCategoryScreen";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import BankDetailScreen from "./screens/BankDetailScreen";
 
 
 const Drawer = createDrawerNavigator()
+const Stack = createNativeStackNavigator ();
+// const Stack = createNativeStackNavigator({
+//     IncomeCategory: {
+//         screen: IncomeCategoryScreen,
+//     },
+//     IncomeSubCategory:{
+//         screen: IncomeSubCategoryScreen,
+//     },
+//     ExpenseCategory:{
+//         screen: ExpenseCategoryScreen,
+//     },
+//     ExpenseSubCategory:{
+//         screen: ExpenseSubCategoryScreen,
+//     },
+// });
 
-export default function Navigation() {
+function NavigationDrawer() {
     return (
-        <NavigationContainer>
+
             <Drawer.Navigator initialRouteName="Home"
                               drawerContent={
                                   (props) => {
@@ -80,9 +102,28 @@ export default function Navigation() {
                 <Drawer.Screen key="Expense" name="Chi phí" options={{drawerIcon:()=><Image source={ICONS.expense}/>}} component={ExpenseScreen}/>
                 <Drawer.Screen key="Goal" name="Mục tiêu" options={{drawerIcon:()=><Image source={ICONS.goal}/>}} component={GoalScreen}/>
                 <Drawer.Screen key="Budget" name="Ngân sách" options={{drawerIcon:()=><Image source={ICONS.budget}/>}} component={BudgetScreen}/>
-                <Drawer.Screen key="Category" name="Danh mục" component={CategoryScreen}/>
-                <Drawer.Screen key="SubCategoryScreen" name="Danh mục phụ" component={SubCategoryScreen}/>
+                <Drawer.Screen key="IncomeCategoryAndSubIncomeCategoryScreen" options={{drawerIcon:()=><Image source={ICONS.incomeCategory}/>}} name="Danh mục thu nhập" component={IncomeCategoryAndSubIncomeCategoryScreen}/>
+                <Drawer.Screen key="ExpenseCategoryAndSubExpenseCategoryScreen" options={{drawerIcon:()=><Image source={ICONS.expenseCategory}/>}} name="Danh mục chi phí" component={ExpenseCategoryAndSubExpenseCategoryScreen}/>
             </Drawer.Navigator>
+
+    );
+}
+
+export default function Navigation() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name="NavigationDrawer"
+                    component={NavigationDrawer}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="BankDetailScreen"
+                    component={BankDetailScreen}
+                    options={{ title: 'BankDetailScreen' }}
+                />
+            </Stack.Navigator>
         </NavigationContainer>
     );
 }

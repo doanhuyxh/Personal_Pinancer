@@ -12,4 +12,6 @@ export const ICONS = {
     bank:require('../assets/Images/Icons/bank.png'),
     budget:require('../assets/Images/Icons/budget.png'),
     goal:require('../assets/Images/Icons/goal.png'),
+    incomeCategory: require('../assets/Images/Icons/incomeCategory.png'),
+    expenseCategory: require('../assets/Images/Icons/exprenseCategory.png')
 }

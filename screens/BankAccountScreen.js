@@ -1,10 +1,10 @@
 import React, {Component, useEffect, useState} from 'react';
 import {Button, Text, View} from 'react-native';
-import {getAllBankAccount} from "../../api/BankAccountApi";
-import ItemBankAccount from "../../components/BankAccount/bankItem";
-import {COLORS} from "../../constants/index";
+import {getAllBankAccount} from "../api/BankAccountApi";
+import ItemBankAccount from "../components/BankAccount/bankItem";
+import {COLORS} from "../constants";
 
-function BankAccountScreen() {
+function BankAccountScreen({navigation}) {
     const [listBank, setListBank] = useState([])
     useEffect(() => {
         getAllBankAccount()
@@ -20,7 +20,7 @@ function BankAccountScreen() {
     return (
         <View className="flex-1 items-center mt-5 bg-blue-200 relative">
             {listBank.map((item, index) => {
-                return <ItemBankAccount key={index} item={item}/>
+                return <ItemBankAccount key={index} item={item} onPress={() => navigation.navigate('BankDetailScreen')}/>
             })}
             <View className="absolute bottom-0 p-2 w-full">
                 <Button color={COLORS.bgGreen} title="Thêm ngân hàng mới" className="w-full bg-green-800"/>

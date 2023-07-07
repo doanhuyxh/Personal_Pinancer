@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 
-function CategoryScreen() {
+function IncomeCategoryAndSubIncomeCategoryScreen() {
 
     return (
         <View>
@@ -10,5 +10,4 @@ function CategoryScreen() {
     );
 }
 
-
-export default CategoryScreen;
+export default IncomeCategoryAndSubIncomeCategoryScreen;
