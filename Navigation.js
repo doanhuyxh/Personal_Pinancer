@@ -28,7 +28,7 @@ const Stack = createNativeStackNavigator ();
 function StackNavigator() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="BankDetailScreen" component={BankDetailScreen} options={{headerShown:false}}/>
+            <Stack.Screen name="BankDetailScreen" component={BankDetailScreen} options={{headerShown:true}}/>
             <Stack.Screen name="IncomeCategoryScreen" component={IncomeCategoryScreen} options={{headerShown:false  }}/>
             <Stack.Screen name="IncomeSubCategoryScreen" component={IncomeSubCategoryScreen} options={{headerShown:false  }}/>
             <Stack.Screen name="ExpenseSubCategoryScreen" component={ExpenseSubCategoryScreen} options={{headerShown:false  }}/>
